@@ -9,4 +9,6 @@ interface UserRepositoryInterface
     public function all();
 
     public function delete($id);
+
+    public function update($id,array $data);
 }

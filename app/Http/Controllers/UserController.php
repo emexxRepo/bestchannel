@@ -36,7 +36,19 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all('name', 'email', 'password', 'password_confirmation');
+        try {
+            $this->userRepository->create($data);
+            return response()->json([
+                'success' => true
+            ], 200);
+        } catch (\Exception $exception) {
+            return response()->json([
+                'success' => false,
+                'message' => $exception->getMessage()
+            ]);
+        }
+
     }
 
     /**
@@ -47,7 +59,15 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        try {
+            $user = $this->userRepository->get($id);
+            return new UserResource($user);
+        } catch (\Exception $exception) {
+            return response()->json([
+                'message' => $exception->getMessage(),
+                'success' => false
+            ]);
+        }
     }
 
     /**
@@ -59,7 +79,15 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try{
+
+            return $this->userRepository->update($id,$request->all());
+        } catch (\Exception $exception){
+            return response()->json([
+                'error' => $exception->getMessage(),
+                'success' => false
+            ]);
+        }
     }
 
     /**
@@ -70,6 +98,16 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $this->userRepository->delete($id);
+            return response()->json([
+                'success' => true,
+            ]);
+        } catch (\Exception $exception) {
+            return response()->json([
+                'message' => $exception->getMessage(),
+                'success' => false
+            ]);
+        }
     }
 }
