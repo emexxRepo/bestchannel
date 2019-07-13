@@ -41,7 +41,18 @@ class SectorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all('name', 'photo', 'slug');
+        try {
+            $this->sectorRepository->create($data);
+            return response()->json([
+                'success' => true
+            ], 200);
+        } catch (\Exception $exception) {
+            return response()->json([
+                'success' => false,
+                'message' => $exception->getMessage()
+            ]);
+        }
     }
 
     /**
@@ -52,7 +63,15 @@ class SectorController extends Controller
      */
     public function show($id)
     {
-        //
+        try {
+            $sector = $this->sectorRepository->get($id);
+            return new SectorResource($sector);
+        } catch (\Exception $exception) {
+            return response()->json([
+                'message' => $exception->getMessage(),
+                'success' => false
+            ]);
+        }
     }
 
     /**
@@ -75,7 +94,18 @@ class SectorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+
+            return response()->json([
+                'success' => true,
+            ]);
+
+        } catch (\Exception $exception) {
+            return response()->json([
+                'error' => $exception->getMessage(),
+                'success' => false
+            ]);
+        }
     }
 
     /**
@@ -86,6 +116,16 @@ class SectorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $this->sectorRepository->delete($id);
+            return response()->json([
+                'success' => true,
+            ]);
+        } catch (\Exception $exception) {
+            return response()->json([
+                'message' => $exception->getMessage(),
+                'success' => false
+            ]);
+        }
     }
 }
