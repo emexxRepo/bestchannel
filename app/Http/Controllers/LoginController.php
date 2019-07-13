@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\SocialRepositoryInterface;
+use App\Repositories\UserRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function login(Request $request)
+    public function login(Request $request, UserRepositoryInterface $userRepository)
     {
         $credentials = [
             'email' => $request->post('email'),
@@ -23,20 +25,51 @@ class LoginController extends Controller
         }
 
 
+        $user = $userRepository->where('email',$request->post('email'));
+
+        if (empty($user)) {
+            return response()->json(
+                [
+                    'success' => false,
+
+                ]
+            );
+        }
+
+        try {
+            $token = $user->createToken('MyApp')-> accessToken;
+        } catch (\Exception $exception){
+            return response()->json([
+                'message' => $exception->getMessage(),
+                'success' => false
+            ]);
+        }
         return response()->json([
             'success' => true,
             'data' => [
                 'email' => $request->get('email'),
+                'token' => $token
             ]
         ], 200);
     }
 
-    public function register(Request $request)
+    public function register(Request $request, SocialRepositoryInterface $socialRepository, UserRepositoryInterface $userRepository)
     {
-        $data = $request->all('name','surname','password','facebook','youtube','instagram');
+        $dataUser = $request->all('name', 'email', 'password');
 
+        $dataSocial = $request->all('facebook', 'youtube', 'instagram', 'twitter');
 
+        try {
 
+            $userSocial = $socialRepository->create($dataSocial);
+            $user = $userRepository->create($dataUser);
+
+        } catch (\Exception $exception) {
+            return response()->json([
+                'message' => $exception->getMessage(),
+                'success' => false
+            ]);
+        }
 
     }
 }

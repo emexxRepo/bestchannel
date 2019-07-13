@@ -40,8 +40,8 @@ class User extends Authenticatable
     ];
 
 
-    public function applies(){
-        return $this->HasMany('App\Apply','user_id');
-
+    public function applies()
+    {
+        return $this->HasMany('App\Apply', 'user_id');
     }
 }

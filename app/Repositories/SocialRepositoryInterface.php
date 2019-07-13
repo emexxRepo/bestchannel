@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-interface UserRepositoryInterface
+interface SocialRepositoryInterface
 {
     public function get($id);
 
@@ -12,5 +12,5 @@ interface UserRepositoryInterface
 
     public function update($id,array $data);
 
-    public function where(string $key,string $value);
+    public function create(array $data);
 }
