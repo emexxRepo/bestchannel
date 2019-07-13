@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Opporunity;
 
-class OpporunityRepository implements OpporunityRepositoryInterface
+class OpportunityRepository implements OpporunityRepositoryInterface
 {
 
     public function get($id)

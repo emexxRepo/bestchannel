@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-interface OpporunityRepositoryInterface
+interface OpportunityRepositoryInterface
 {
     public function get($id);
 
