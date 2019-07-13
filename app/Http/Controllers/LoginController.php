@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Repositories\SocialRepositoryInterface;
@@ -31,6 +30,7 @@ class LoginController extends Controller
             return response()->json(
                 [
                     'success' => false,
+                    'message' => 'User empty'
 
                 ]
             );
