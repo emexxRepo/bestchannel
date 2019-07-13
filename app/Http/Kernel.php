@@ -20,6 +20,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\TrustProxies::class,
 //        \Laravel\Passport\Http\Middleware\CreateFreshApiToken::class,
+        'cors' => \App\Http\Middleware\Cors::class, // <-- add this line
 
     ];
 
