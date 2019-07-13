@@ -2,35 +2,35 @@
 
 namespace App\Repositories;
 
-use App\Company;
+use App\Companies;
 
 class CompanyRepository implements CompanyRepositoryInterface
 {
 
     public function get($id)
     {
-        return Company::find($id);
+        return Companies::find($id);
     }
 
 
     public function all()
     {
-        return Company::all();
+        return Companies::all();
     }
 
 
     public function delete($id)
     {
-        Company::destroy($id);
+        Companies::destroy($id);
     }
 
     public function update($id, array $data)
     {
-        return Company::find($id)->update($data);
+        return Companies::find($id)->update($data);
     }
 
     public function create(array $data)
     {
-        return Company::create($data);
+        return Companies::create($data);
     }
 }
