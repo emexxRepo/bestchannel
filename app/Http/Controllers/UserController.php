@@ -79,10 +79,13 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        try{
+        try {
 
-            return $this->userRepository->update($id,$request->all());
-        } catch (\Exception $exception){
+            return response()->json([
+                'success' => true,
+            ]);
+
+        } catch (\Exception $exception) {
             return response()->json([
                 'error' => $exception->getMessage(),
                 'success' => false
