@@ -42,7 +42,7 @@ class LoginController extends Controller
             return response()->json([
                 'message' => $exception->getMessage(),
                 'success' => false
-            ]);
+            ],404);
         }
         return response()->json([
             'success' => true,
