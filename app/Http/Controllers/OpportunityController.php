@@ -43,7 +43,18 @@ class OpportunityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all('company_id', 'title', 'content', 'photo');
+        try {
+            $this->opportunityRepository->create($data);
+            return response()->json([
+                'success' => true
+            ], 200);
+        } catch (\Exception $exception) {
+            return response()->json([
+                'success' => false,
+                'message' => $exception->getMessage()
+            ]);
+        }
     }
 
     /**
@@ -54,7 +65,15 @@ class OpportunityController extends Controller
      */
     public function show($id)
     {
-        //
+        try {
+            $opportunity = $this->opportunityRepository->get($id);
+            return new OpportunityResource($opportunity);
+        } catch (\Exception $exception) {
+            return response()->json([
+                'message' => $exception->getMessage(),
+                'success' => false
+            ]);
+        }
     }
 
     /**
@@ -77,7 +96,18 @@ class OpportunityController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+
+            return response()->json([
+                'success' => true,
+            ]);
+
+        } catch (\Exception $exception) {
+            return response()->json([
+                'error' => $exception->getMessage(),
+                'success' => false
+            ]);
+        }
     }
 
     /**
@@ -88,6 +118,16 @@ class OpportunityController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $this->opportunityRepository->delete($id);
+            return response()->json([
+                'success' => true,
+            ]);
+        } catch (\Exception $exception) {
+            return response()->json([
+                'message' => $exception->getMessage(),
+                'success' => false
+            ]);
+        }
     }
 }

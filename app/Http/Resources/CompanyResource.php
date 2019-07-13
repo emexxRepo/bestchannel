@@ -19,7 +19,8 @@ class CompanyResource extends ResourceCollection
             'name' => $this->name,
             'sector_id' => $this->sector_id,
             'photo' => $this->photo,
-            'slug' => $this->slug,
+            'email' => $this->email,
+            'password' => $this->password,
         ];
     }
 }
