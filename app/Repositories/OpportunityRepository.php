@@ -2,35 +2,35 @@
 
 namespace App\Repositories;
 
-use App\Opporunity;
+use App\Opportunity;
 
-class OpportunityRepository implements OpporunityRepositoryInterface
+class OpportunityRepository implements OpportunityRepositoryInterface
 {
 
     public function get($id)
     {
-        return Opporunity::find($id);
+        return Opportunity::find($id);
     }
 
 
     public function all()
     {
-        return Opporunity::all();
+        return Opportunity::all();
     }
 
 
     public function delete($id)
     {
-        Opporunity::destroy($id);
+        Opportunity::destroy($id);
     }
 
     public function update($id, array $data)
     {
-        return Opporunity::find($id)->update($data);
+        return Opportunity::find($id)->update($data);
     }
 
     public function create(array $data)
     {
-        return Opporunity::create($data);
+        return Opportunity::create($data);
     }
 }
