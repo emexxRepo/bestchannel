@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class ApplyController extends Controller
 {
-    private $sectorRepository = null;
+    private $applyRepository = null;
 
     public function __construct(ApplyRepositoryInterface $applyRepository)
     {
