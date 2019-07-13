@@ -16,7 +16,7 @@ class UserTableSeeder extends Seeder
         \App\User::create([
             'name' => 'Ali',
             'email' => 'a@a.com',
-            'password' => bcrypt('123456')
+            'password' => bcrypt('12345678')
         ]);
         $faker = Faker::create();
         foreach (range(1, 10) as $index) {
