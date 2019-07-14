@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\OpportunityResource;
+use App\Repositories\OpportunityRepositoryInterface;
 use Illuminate\Http\Request;
 
 class OpportunityController extends Controller

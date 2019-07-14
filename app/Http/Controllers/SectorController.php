@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Resources\SectorResource;
+use App\Repositories\SectorRepositoryInterface;
 class SectorController extends Controller
 {
     private $sectorRepository = null;

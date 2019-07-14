@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ApplyResource;
+use App\Repositories\ApplyRepositoryInterface;
 use Illuminate\Http\Request;
 
 class ApplyController extends Controller

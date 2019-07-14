@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\CompanyResource;
-use Faker\Provider\Company;
+use App\Repositories\CompanyRepositoryInterface;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -22,6 +22,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
+
         return CompanyResource::collection($this->companyRepository->all());
     }
 
