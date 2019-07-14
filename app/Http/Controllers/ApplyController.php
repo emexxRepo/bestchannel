@@ -42,7 +42,18 @@ class ApplyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all('user_id', 'opportunity_id');
+        try {
+            $this->applyRepository->create($data);
+            return response()->json([
+                'success' => true
+            ], 200);
+        } catch (\Exception $exception) {
+            return response()->json([
+                'success' => false,
+                'message' => $exception->getMessage()
+            ]);
+        }
     }
 
     /**
@@ -53,7 +64,15 @@ class ApplyController extends Controller
      */
     public function show($id)
     {
-        //
+        try {
+            $apply = $this->applyRepository->get($id);
+            return new ApplyResource($apply);
+        } catch (\Exception $exception) {
+            return response()->json([
+                'message' => $exception->getMessage(),
+                'success' => false
+            ]);
+        }
     }
 
     /**
@@ -76,7 +95,18 @@ class ApplyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+
+            return response()->json([
+                'success' => true,
+            ]);
+
+        } catch (\Exception $exception) {
+            return response()->json([
+                'error' => $exception->getMessage(),
+                'success' => false
+            ]);
+        }
     }
 
     /**
@@ -87,6 +117,16 @@ class ApplyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $this->applyRepository->delete($id);
+            return response()->json([
+                'success' => true,
+            ]);
+        } catch (\Exception $exception) {
+            return response()->json([
+                'message' => $exception->getMessage(),
+                'success' => false
+            ]);
+        }
     }
 }
