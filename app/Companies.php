@@ -16,5 +16,9 @@ class Companies extends Model
         return $this->hasMany('App\Apply','opportunity_id');
 
     }
+    public function oppurunity(){
+        return $this->belongsTo('App\Opportunity','opportunity_id');
+
+    }
 
 }
