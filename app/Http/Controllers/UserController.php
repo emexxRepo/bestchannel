@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Resources\UserResource;
 use App\Repositories\UserRepositoryInterface;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -37,7 +36,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all('name', 'email', 'password', 'password_confirmation','photo');
+        $data = $request->all('name', 'email', 'password', 'password_confirmation', 'photo');
         try {
             $this->userRepository->create($data);
             return response()->json([
@@ -114,7 +113,6 @@ class UserController extends Controller
             ]);
         }
     }
-
 
 
 }

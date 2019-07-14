@@ -10,5 +10,5 @@ interface SectorRepositoryInterface
 
     public function delete($id);
 
-    public function update($id,array $data);
+    public function update($id, array $data);
 }

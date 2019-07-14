@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\ApplyResource;
 use App\Repositories\ApplyRepositoryInterface;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class ApplyController extends Controller
 {
@@ -18,7 +20,7 @@ class ApplyController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -28,7 +30,7 @@ class ApplyController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -38,8 +40,8 @@ class ApplyController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -49,7 +51,7 @@ class ApplyController extends Controller
             return response()->json([
                 'success' => true
             ], 200);
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             return response()->json([
                 'success' => false,
                 'message' => $exception->getMessage()
@@ -60,15 +62,15 @@ class ApplyController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function show($id)
     {
         try {
             $apply = $this->applyRepository->get($id);
             return new ApplyResource($apply);
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             return response()->json([
                 'message' => $exception->getMessage(),
                 'success' => false
@@ -79,8 +81,8 @@ class ApplyController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function edit($id)
     {
@@ -90,9 +92,9 @@ class ApplyController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param int $id
+     * @return Response
      */
     public function update(Request $request, $id)
     {
@@ -102,7 +104,7 @@ class ApplyController extends Controller
                 'success' => true,
             ]);
 
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             return response()->json([
                 'error' => $exception->getMessage(),
                 'success' => false
@@ -113,8 +115,8 @@ class ApplyController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function destroy($id)
     {
@@ -123,7 +125,7 @@ class ApplyController extends Controller
             return response()->json([
                 'success' => true,
             ]);
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             return response()->json([
                 'message' => $exception->getMessage(),
                 'success' => false

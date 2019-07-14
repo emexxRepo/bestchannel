@@ -8,8 +8,9 @@ class Social extends Model
 {
     protected $table = 'socials';
 
-    public function user(){
-        return $this->belongsTo('App\User','user_id');
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'user_id');
 
     }
 }

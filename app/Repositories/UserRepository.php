@@ -34,8 +34,8 @@ class UserRepository implements UserRepositoryInterface
         return User::create($data);
     }
 
-    public function where(string $key,string $value)
+    public function where(string $key, string $value)
     {
-        return User::where($key,$value)->first();
+        return User::where($key, $value)->first();
     }
 }

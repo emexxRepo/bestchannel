@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Repositories\SocialRepositoryInterface;
@@ -24,7 +25,7 @@ class LoginController extends Controller
         }
 
 
-        $user = $userRepository->where('email',$request->post('email'));
+        $user = $userRepository->where('email', $request->post('email'));
 
         if (empty($user)) {
             return response()->json(
@@ -37,12 +38,12 @@ class LoginController extends Controller
         }
 
         try {
-            $token = $user->createToken('MyApp')-> accessToken;
-        } catch (\Exception $exception){
+            $token = $user->createToken('MyApp')->accessToken;
+        } catch (\Exception $exception) {
             return response()->json([
                 'message' => $exception->getMessage(),
                 'success' => false
-            ],404);
+            ], 404);
         }
         return response()->json([
             'success' => true,
