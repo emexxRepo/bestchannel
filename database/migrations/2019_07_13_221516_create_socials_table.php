@@ -18,7 +18,8 @@ class CreateSocialsTable extends Migration
             $table->string('instagram')->nullable();
             $table->string('youtube')->nullable();
             $table->string('twitter')->nullable();
-            $table->unsignedInteger('user_id')->onDelete('cascade');
+            $table->string('facebook')->nullable();
+            $table->unsignedInteger('user_id')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

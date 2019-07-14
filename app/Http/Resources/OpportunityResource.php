@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Companies;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class OpportunityResource extends JsonResource
@@ -16,11 +17,12 @@ class OpportunityResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'company_id' => $this->company_id,
-            'title' => $this->title,
+            'company_id' => Companies::find($this->company_id),
+            'name' => $this->name,
             'photo' => $this->photo,
             'slug' => $this->slug,
-            'content' => $this->content,
+            'summary' => $this->summary,
+            'price' => $this->price
         ];
     }
 }

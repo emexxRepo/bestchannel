@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\OpportunityResource;
+use App\Repositories\OpportunityRepositoryInterface;
 use Illuminate\Http\Request;
 
 class OpportunityController extends Controller
@@ -23,16 +24,6 @@ class OpportunityController extends Controller
     public function index()
     {
         return OpportunityResource::collection($this->opportunityRepository->all());
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -76,16 +67,6 @@ class OpportunityController extends Controller
         }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.

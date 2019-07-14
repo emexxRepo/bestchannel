@@ -33,4 +33,9 @@ class CompanyRepository implements CompanyRepositoryInterface
     {
         return Companies::create($data);
     }
+
+    public function where2($key1, $val1, $key2, $val2)
+    {
+        return Companies::where($key1, $val1)->where($key2, $val2)->first();
+    }
 }

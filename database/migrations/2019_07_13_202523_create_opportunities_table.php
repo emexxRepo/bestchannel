@@ -16,8 +16,9 @@ class CreateOpportunitiesTable extends Migration
         Schema::create('opportunities', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('company_id')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('title');
-            $table->text('content');
+            $table->string('name');
+            $table->decimal('price');
+            $table->text('summary')->nullable();
             $table->string('photo');
             $table->timestamps();
         });

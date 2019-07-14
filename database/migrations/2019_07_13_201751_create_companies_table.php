@@ -16,9 +16,10 @@ class CreateCompaniesTable extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('photo');
+            $table->string('photo')->nullable();
             $table->string('email');
             $table->string('password');
+            $table->string('summary')->nullable();
             $table->unsignedInteger('sector_id')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });

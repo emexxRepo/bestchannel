@@ -16,8 +16,9 @@ class OpportunityTableSeeder extends Seeder
         foreach (range(1, 10) as $index) {
             DB::table('opportunities')->insert([
                 'company_id' => 1,
-                'title' => $faker->title,
-                'content' => $faker->text,
+                'name' => $faker->title,
+                'price' => $faker->randomNumber(2),
+                'summary' => $faker->text,
                 'photo'=>$faker->jobTitle.'png'
             ]);
         }

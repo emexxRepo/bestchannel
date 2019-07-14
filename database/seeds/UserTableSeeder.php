@@ -23,6 +23,7 @@ class UserTableSeeder extends Seeder
         foreach (range(1, 10) as $index) {
             $user = \App\User::create([
                 'name' => $faker->name,
+                'lastname' => $faker->lastname,
                 'email' => $faker->email,
                 'password' => bcrypt('secret'),
                 'photo' => $faker->title . 'png',

@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\CompanyResource;
-use Faker\Provider\Company;
+use App\Http\Resources\CompaniesResource;
+use App\Repositories\CompanyRepository;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
-    private $companyRepository = null;
+    private $companyRepository;
 
-    public function __construct(CompanyRepositoryInterface $companyRepository)
+    public function __construct(CompanyRepository $companyRepository)
     {
         $this->companyRepository = $companyRepository;
     }
@@ -22,18 +22,9 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        return CompanyResource::collection($this->companyRepository->all());
+        return response()->json($this->companyRepository->all());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -66,8 +57,8 @@ class CompanyController extends Controller
     public function show($id)
     {
         try {
-            $company = $this->userRepository->get($id);
-            return new CompanyResource($company);
+            $company = $this->companyRepository->get($id);
+            return $company;
         } catch (\Exception $exception) {
             return response()->json([
                 'message' => $exception->getMessage(),
@@ -76,16 +67,6 @@ class CompanyController extends Controller
         }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -97,7 +78,6 @@ class CompanyController extends Controller
     public function update(Request $request, $id)
     {
         try {
-
             return response()->json([
                 'success' => true,
             ]);

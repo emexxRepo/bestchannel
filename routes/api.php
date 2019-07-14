@@ -15,6 +15,8 @@ use Illuminate\Http\Request;
 
 Route::apiResource('users', 'UserController')->middleware('auth:api');
 Route::post('/user/login', 'LoginController@login')->middleware('guest');
+Route::post('/co/login', 'LoginController@loginCo')->middleware('guest');
+
 Route::post('/user/register', 'LoginController@register')->middleware('guest');
 Route::apiResource('companies', 'CompanyController')->middleware('auth:api');
 Route::apiResource('applies', 'ApplyController')->middleware('auth:api');

@@ -3,10 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Passport\HasApiTokens;
 
 class Companies extends Model
 {
     protected $table = 'companies';
+    use HasApiTokens;
 
     public function sector(){
         return $this->belongsTo('App\Sector','sector_id');
