@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-interface OpportunityRepositoryInterface
+interface SocialRepositoryInterface
 {
     public function get($id);
 
@@ -11,4 +11,6 @@ interface OpportunityRepositoryInterface
     public function delete($id);
 
     public function update($id,array $data);
+
+    public function create(array $data);
 }
