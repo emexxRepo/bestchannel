@@ -44,4 +44,8 @@ class User extends Authenticatable
     {
         return $this->HasMany('App\Apply', 'user_id');
     }
+    public function socials()
+    {
+        return $this->HasMany('App\Social', 'user_id');
+    }
 }
