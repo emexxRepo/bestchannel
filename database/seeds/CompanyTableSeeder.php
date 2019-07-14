@@ -18,7 +18,8 @@ class CompanyTableSeeder extends Seeder
                 'name' => $faker->name,
                 'email' => $faker->email,
                 'password' => bcrypt('secret'),
-                'sector_id'=>1
+                'sector_id'=>1,
+                'photo'=>$faker->creditCardExpirationDateString.'.jpg',
             ]);
         }
     }

@@ -14,11 +14,11 @@ class OpportunityTableSeeder extends Seeder
     {
         $faker = Faker::create();
         foreach (range(1, 10) as $index) {
-            DB::table('companies')->insert([
+            DB::table('opportunities')->insert([
                 'company_id' => 1,
                 'title' => $faker->title,
                 'content' => $faker->text,
-                'photo'=>$faker->title
+                'photo'=>$faker->jobTitle.'png'
             ]);
         }
     }

@@ -14,10 +14,10 @@ class SectorTableSeeder extends Seeder
     {
         $faker = Faker::create();
         foreach (range(1, 10) as $index) {
-            DB::table('companies')->insert([
+            DB::table('sectors')->insert([
                 'name' => $faker->name,
                 'slug' => $faker->slug,
-                'photo'=>$faker->title
+                'photo'=>$faker->title.'gif'
             ]);
         }
     }

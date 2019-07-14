@@ -14,7 +14,7 @@ class ApplyTableSeeder extends Seeder
     {
         $faker = Faker::create();
         foreach (range(1, 10) as $index) {
-            DB::table('companies')->insert([
+            DB::table('applies')->insert([
                 'user_id' => 1,
                 'opportunity_id' => 2,
 
